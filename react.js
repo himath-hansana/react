@@ -48,6 +48,10 @@ export default function App() {
     }
   };
 
+  const deleteStudent = (idToDelete) => {
+    setStudents(students.filter((item) => item.id !== idToDelete));
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
 
@@ -83,6 +87,9 @@ export default function App() {
         <View key={item.id} style={styles.card}>
           <Text>{item.name} (Age: {item.age})</Text>
         </View>
+        <TouchableOpacity onPress={() => deleteStudent(item.id)}>
+            <Text style={styles.deleteBtn}>✕</Text>
+          </TouchableOpacity>
       ))}
 
     </ScrollView>
